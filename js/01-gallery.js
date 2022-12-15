@@ -29,3 +29,4 @@ createGallery(); //execute function
 //div.gallery listener -
 
 console.log(galleryItems);
+console.log(galleryItems);
