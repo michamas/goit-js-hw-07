@@ -28,15 +28,26 @@ const createGallery = () => {
 //execute function
 createGallery();
 
-//const instance with lightbox
+//handling click - works if you click only on a picture
+// creates img by basicLightbox function "create"
 
 function clickImg(e) {
-  const instance = basicLightbox.create(
-    `<img src = ${e.target.dataset.source}>`
-  );
-  e.preventDefault;
-  e.target = instance.show();
+  if (e.target.classList.contains("gallery__image")) {
+    const instance = basicLightbox.create(
+      `<img src = ${e.target.dataset.source}>`
+    );
+
+    /*
+add in the end :,
+      ,{ closable: false }
+
+*/
+    // e.preventDefault;
+    console.log(e.target.alt);
+    instance.show();
+  }
 }
 
 gallery.addEventListener("click", clickImg);
+
 console.log(galleryItems);
