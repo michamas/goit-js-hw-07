@@ -11,28 +11,32 @@ const createGallery = () => {
 
     let galleryLink = document.createElement("a");
     galleryLink.classList.add("gallery__link");
-    galleryLink.href = galleryItems[i].original;
+    // galleryLink.href = galleryItems[i].original;
 
     let galleryImg = document.createElement("img");
     galleryImg.classList.add("gallery__image");
     galleryImg.src = galleryItems[i].preview;
+    galleryImg.dataset.source = galleryItems[i].original;
     galleryImg.alt = galleryItems[i].description;
 
     gallery.append(galleryDiv);
     galleryDiv.append(galleryLink);
     galleryLink.append(galleryImg);
   }
-  console.log("I've created a gallery of imgs' previews");
+  console.log("I've created a gallery of small imgs");
 };
-createGallery(); //execute function
+//execute function
+createGallery();
 
-//div.gallery listener -
+//const instance with lightbox
 
-const handleClick = (e) => {
-  e.preventDefault();
-  // gallery.src = galleryItems.original;
-};
+function clickImg(e) {
+  const instance = basicLightbox.create(
+    `<img src = ${e.target.dataset.source}>`
+  );
+  e.preventDefault;
+  e.target = instance.show();
+}
 
-gallery.addEventListener("click", handleClick);
-
+gallery.addEventListener("click", clickImg);
 console.log(galleryItems);
