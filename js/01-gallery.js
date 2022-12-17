@@ -28,5 +28,11 @@ createGallery(); //execute function
 
 //div.gallery listener -
 
-console.log(galleryItems);
+const handleClick = (e) => {
+  e.preventDefault();
+  // gallery.src = galleryItems.original;
+};
+
+gallery.addEventListener("click", handleClick);
+
 console.log(galleryItems);
