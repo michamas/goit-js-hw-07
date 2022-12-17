@@ -47,7 +47,14 @@ add in the end :,
     instance.show();
   }
 }
-
+/*
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    instance.close();
+    console.log("pressed ESC");
+  }
+});
+*/
 gallery.addEventListener("click", clickImg);
 
 console.log(galleryItems);
