@@ -32,29 +32,30 @@ createGallery();
 // creates img by basicLightbox function "create"
 
 function clickImg(e) {
-  if (e.target.classList.contains("gallery__image")) {
-    const instance = basicLightbox.create(
-      `<img src = ${e.target.dataset.source}>`
-    );
-
-    /*
-add in the end :,
-      ,{ closable: false }
-
-*/
-    // e.preventDefault;
-    console.log(e.target.alt);
-    instance.show();
+  if (e.target.nodeName !== "IMG") {
+    return;
   }
+  const instance = basicLightbox.create(
+    `<img src = ${e.target.dataset.source}>`
+  );
+  instance.show();
+  console.log(e.target.alt);
+
+  document.addEventListener("keydown", function closeImg(event) {
+    if (event.key === "Escape") {
+      instance.close();
+      console.log("pressed ESC");
+      document.removeEventListener("keydown", closeImg);
+    }
+  });
 }
-/*
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    instance.close();
-    console.log("pressed ESC");
-  }
-});
-*/
-gallery.addEventListener("click", clickImg);
 
+gallery.addEventListener("click", clickImg);
 console.log(galleryItems);
+
+/*
+  if (e.target.classList.contains("gallery__image")) {
+    console.log(e.target.alt);
+  }
+
+*/
