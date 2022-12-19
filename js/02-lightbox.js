@@ -27,6 +27,7 @@ createGallery();
 
 // point to SimpleLightbox which elements we want to handle
 const lightbox = new SimpleLightbox(".gallery .gallery__item");
+// enable Keyboard navigations
 lightbox.on("enableKeyboard.simplelightbox", function () {});
 
 console.log(galleryItems);
