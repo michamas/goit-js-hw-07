@@ -27,7 +27,11 @@ createGallery();
 
 // point to SimpleLightbox which elements we want to handle
 const lightbox = new SimpleLightbox(".gallery .gallery__item");
-// enable Keyboard navigations
-lightbox.on("enableKeyboard.simplelightbox", function () {});
+
+// disable Keyboard navigations
+lightbox.on("enableKeyboard.simplelightbox", false); // not working, keyboard still works
+
+// test - block scroll in mousescroll
+lightbox.on("scrollZoom.simplelightbox", false); // TypeError
 
 console.log(galleryItems);
