@@ -26,12 +26,12 @@ const createGallery = () => {
 createGallery();
 
 // point to SimpleLightbox which elements we want to handle
-const lightbox = new SimpleLightbox(".gallery .gallery__item");
-
-// disable Keyboard navigations
-lightbox.on("enableKeyboard.simplelightbox", false); // not working, keyboard still works
-
-// test - block scroll in mousescroll
-lightbox.on("scrollZoom.simplelightbox", false); // TypeError
+// in object include options
+const lightbox = new SimpleLightbox(".gallery .gallery__item", {
+  enableKeyboard: true,
+  captions: true,
+  captionsData: "alt",
+  captionDelay: 250,
+});
 
 console.log(galleryItems);
